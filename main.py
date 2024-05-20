@@ -28,4 +28,4 @@ def show_information():
     return render_template('ip_information.html', **context)
 
 
-app.run(host='0.0.0.0', port=81, debug=True)
+app.run(host='0.0.0.0', port=8080, debug=True)

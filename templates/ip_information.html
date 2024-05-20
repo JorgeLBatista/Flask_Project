@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% import "macro.html" as macro %}
+
 <!--el super lo q hace es tomar lo del padre y lo mantiene -->
 {% block title %}
 {{ super() }}
@@ -6,9 +8,6 @@ ip information
 {% endblock %}
 
 {% block body %}
-
-
-
 {% if user_ip %}
 <h2>Hola su ip es: {{user_ip}}</h2>
 {% else %}
@@ -17,7 +16,7 @@ ip information
 
 <ul>
   {% for i in items %}
-  <li>{{i}}</li>
+  macro.render_items(i)
   {% endfor %}
 </ul>
 {% endblock %}
