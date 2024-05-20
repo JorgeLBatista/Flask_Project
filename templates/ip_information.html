@@ -1,16 +1,24 @@
-{% if user_ip %}
+{% extends 'base.html' %} 
+<!--el super lo q hace es tomar lo del padre y lo mantiene -->
+{% block title %} 
+    {{ super() }}
+    ip information 
+{% endblock %}
+
+{% block body %}
+    {% if user_ip %}
         <h2>Hola su ip es: {{user_ip}}</h2>
-{% else %}
+    {% else %}
         <a href="{{ url_for('index') }}">Click aqui</a>
-{% endif %}
+    {% endif %}
 
-<ul>
-    {% for i in items %}
-        <li> {{i}} </li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for i in items %}
+            <li>{{i}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
 
 
-
-
+    
 
