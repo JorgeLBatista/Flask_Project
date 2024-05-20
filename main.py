@@ -1,10 +1,14 @@
-from flask import Flask, request, make_response, redirect, render_template
+from flask import Flask, request, make_response, redirect, render_template, session
+from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
 
 """
     tengo q ver bien esto
 
 """
 app = Flask(__name__)
+Bootstrap(app)
+app.config['SECRET_KEY'] = 'CLAVE SEGURA'
 
 items = ["Lechuga", "Platano", "Mango", "Uva"]
 
@@ -21,14 +25,14 @@ def not_found_endpoint(error):
 def index():
     user_ip_information = request.remote_addr
     reponse = make_response(redirect('/show_information_address'))
-    reponse.set_cookie('user_ip_information', user_ip_information)
+    session["user_ip_information"] = user_ip_information
 
     return reponse
 
 
 @app.route('/show_information_address')
 def show_information():
-    user_ip = request.cookies.get('user_ip_information')
+    user_ip = session.get('user_ip_information')
     context = {
         "user_ip": user_ip,
         "items": items
