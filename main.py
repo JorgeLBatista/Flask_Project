@@ -9,6 +9,14 @@ app = Flask(__name__)
 items = ["Lechuga", "Platano", "Mango", "Uva"]
 
 
+@app.errorhandler(404)
+def not_found_endpoint(error):
+    context = {
+        "error": error
+    }
+    return render_template('error.html', **context)
+
+
 @app.route('/index')
 def index():
     user_ip_information = request.remote_addr
