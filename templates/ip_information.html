@@ -1,0 +1,16 @@
+{% if user_ip %}
+        <h2>Hola su ip es: {{user_ip}}</h2>
+{% else %}
+        <a href="{{ url_for('index') }}">Click aqui</a>
+{% endif %}
+
+<ul>
+    {% for i in items %}
+        <li> {{i}} </li>
+    {% endfor %}
+</ul>
+
+
+
+
+
