@@ -28,4 +28,9 @@ def show_information():
     return render_template('ip_information.html', **context)
 
 
+@app.route('/index2')
+def index2():
+    return render_template('hola_mundo.html')
+
+
 app.run(host='0.0.0.0', port=8080, debug=True)
